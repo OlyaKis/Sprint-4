@@ -1,9 +1,12 @@
 import pytest
-
 from main import BooksCollector
 
 @pytest.fixture
-def new_book():
+def create_object():
     book = BooksCollector()
-    book.add_new_book('Крутая книга')
     return book
+
+@pytest.fixture
+def new_book(create_object):
+    create_object.add_new_book('Крутая книга')
+    return create_object
